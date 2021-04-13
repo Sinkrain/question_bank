@@ -21,10 +21,16 @@ class Questions(BaseModel):
     recording the base information of question
     """
 
+    status_map = (
+        (0, "DELETE"),
+        (10, "OFFLINE"),
+        (20, "ONLINE")
+     )
+
     question_id = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=120)
-    type = models.IntegerField()
-    status = models.IntegerField()
+    title = models.CharField(max_length=120, unique=True)
+    type = models.IntegerField(unique=True)
+    status = models.IntegerField(choices=status_map)
     version = models.IntegerField()
 
     def __str__(self):
@@ -32,6 +38,7 @@ class Questions(BaseModel):
 
     class Meta:
         db_table = "question_bank"
+        unique_together = ("title", "type")
 
 
 class DetailInfo(BaseModel):

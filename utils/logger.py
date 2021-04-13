@@ -5,6 +5,8 @@
 # @File : logger.py
 
 import logging
+from question_bank.settings import LOGGER_NAME, LOGGER_LEVEL
 
 
-logger = logging.getLogger("")
+logger = logging.getLogger(LOGGER_NAME)
+logging.basicConfig(level=LOGGER_LEVEL)

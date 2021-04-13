@@ -5,3 +5,4 @@
 # @File : __init__.py.py
 
 from .question_model import Questions, DetailInfo, QuestionDetailRel
+from .question_serializer import QuestionSerializer, QuestionDetailRelSerializer, DetailSerializer

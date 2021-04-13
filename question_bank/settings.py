@@ -131,3 +131,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGGER_NAME = "question_bank"
+LOGGER_LEVEL = DEBUG
