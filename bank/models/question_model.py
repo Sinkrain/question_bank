@@ -6,8 +6,8 @@ from django.utils import timezone
 
 class BaseModel(models.Model):
 
-    update_user = models.CharField(max_length=45)
-    create_user = models.CharField(max_length=45)
+    update_user = models.CharField(max_length=45, default="")
+    create_user = models.CharField(max_length=45, default="")
     update_time = models.DateTimeField(default=timezone.now)
     create_time = models.DateTimeField(default=timezone.now)
 
@@ -27,14 +27,22 @@ class Questions(BaseModel):
         (20, "ONLINE")
      )
 
+    type_map = (
+        (1, "python"),
+        (2, "golang"),
+        (3, "java"),
+        (4, "typescript"),
+        (5, "nodejs")
+    )
+
     question_id = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=120, unique=True)
-    type = models.IntegerField(unique=True)
+    title = models.CharField(max_length=120)
+    type = models.IntegerField(choices=type_map)
     status = models.IntegerField(choices=status_map)
     version = models.IntegerField()
 
     def __str__(self):
-        return self.__name__
+        return self.title
 
     class Meta:
         db_table = "question_bank"

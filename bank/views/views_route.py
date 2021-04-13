@@ -8,6 +8,6 @@ from __future__ import annotations
 from .question import QuestionInfo
 
 
-get_question_info = QuestionInfo.as_view({'post': 'get_question_info'})
+get_question_info = QuestionInfo.as_view({'get': 'get_question_info'})
 add_question_info = QuestionInfo.as_view({'post': 'add_question_info'})
 update_question_info = QuestionInfo.as_view({'post': 'update_question_info'})
